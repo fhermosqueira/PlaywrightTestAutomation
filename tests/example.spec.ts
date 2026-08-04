@@ -23,9 +23,7 @@ test('add element', async ({ page }) => {
   await addElementPage.goToAddElementPage();
   await addElementPage.clickAddElementButton();
 
+  await expect(addElementPage.deleteButton).toBeVisible();
 
-
-  await expect(page.getByRole('button', { name: 'Delete' })).toBeVisible();
-
-})
+});
 
