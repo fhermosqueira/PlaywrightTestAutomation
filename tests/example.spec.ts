@@ -1,4 +1,5 @@
-import { test, expect } from '@playwright/test';
+import { expect } from '@playwright/test';
+import { test } from '../fixtures/pages';
 import { LoginPage } from '../pages/login-page';
 import { AddElementPage } from '../pages/addelement-page';
 
@@ -7,19 +8,16 @@ import { AddElementPage } from '../pages/addelement-page';
 //
 //});
 
-test('succesful login', async ({ page }) => {
-
-  const loginPage = new LoginPage(page);
+test('succesful login', async ({ loginPage }) => {
   await loginPage.goToLoginPage();
   await loginPage.login('tomsmith', 'SuperSecretPassword!');
 
-  await expect(page.getByText('You logged into a secure area')).toBeVisible();
+  await expect(loginPage.page.getByText('You logged into a secure area')).toBeVisible();
 
 })
 
-test('add element', async ({ page }) => {
+test('add element', async ({ addElementPage }) => {
 
-  const addElementPage = new AddElementPage(page);
   await addElementPage.goToAddElementPage();
   await addElementPage.clickAddElementButton();
 

@@ -20,4 +20,6 @@ export class AddElementPage extends BasePage {
     async clickAddElementButton() {
         await this.addElementButton.click();
     }
+
+    
 }
