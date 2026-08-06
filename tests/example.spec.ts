@@ -10,39 +10,41 @@ test('succesful login', async ({ loginPage }) => {
 
 })
 
+const invalidLoginCases = [
+  { 
+    description: 'usuario incorrecto', 
+    username: 'usuarioMalo', 
+    password: 'SuperSecretPassword!',
+    expectedError: 'Your username is invalid!' 
+  },
+  { 
+    description: 'password incorrecto', 
+    username: 'tomsmith', 
+    password: 'SuperSecretPassword',
+    expectedError: 'Your password is invalid!' 
+  },
+  { 
+    description: 'campos vacíos', 
+    username: " ", 
+    password: " ",
+    expectedError: 'Your username is invalid!' 
+  },
+];
+
+for (const testCase of invalidLoginCases) {
+  test(`login fallido: ${testCase.description}`, async ({ loginPage }) => {
+    await loginPage.goToLoginPage();
+    await loginPage.login(testCase.username, testCase.password);
+    await expect(loginPage.errorMessage).toContainText(testCase.expectedError);
+  });
+}
+
 test('add element', async ({ addElementPage }) => {
 
   await addElementPage.goToAddElementPage();
   await addElementPage.clickAddElementButton();
 
   await expect(addElementPage.deleteButton).toBeVisible();
-
-})
-
-test('incorrect username', async ({ loginPage }) => {
-
-  await loginPage.goToLoginPage();
-  await loginPage.login('fher', 'wrongpassword');
-
-  await expect(loginPage.page.getByText('Your username is invalid!')).toBeVisible();
-
-})
-
-test('incorrect password', async ({ loginPage }) => {
-
-  await loginPage.goToLoginPage();
-  await loginPage.login('tomsmith', 'wrongpassword');
-
-  await expect(loginPage.page.getByText('Your password is invalid!')).toBeVisible();
-
-})
-
-test('empty fields', async ({ loginPage }) => {
-
-  await loginPage.goToLoginPage();
-  await loginPage.login('', '');
-
-  await expect(loginPage.page.getByText('Your username is invalid!')).toBeVisible();
 
 })
 

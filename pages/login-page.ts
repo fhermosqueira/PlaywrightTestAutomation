@@ -5,7 +5,9 @@ export class LoginPage extends BasePage {
     readonly usernameInput: Locator;
     readonly passwordInput: Locator;
     readonly submitButton: Locator;
-
+    readonly wrongUsernameMessage: Locator;
+    readonly wrongPasswordMessage: Locator;
+     readonly errorMessage: Locator;
 
     // primero, los elements locators
     constructor(page: Page) {
@@ -13,6 +15,9 @@ export class LoginPage extends BasePage {
         this.usernameInput = page.getByRole('textbox', { name: 'Username' });
         this.passwordInput = page.getByRole('textbox', { name: 'Password' });
         this.submitButton = page.getByRole('button', { name: ' Login' });
+        this.wrongUsernameMessage = page.getByText('Your username is invalid!');
+        this.wrongPasswordMessage = page.getByText('Your password is invalid!');
+        this.errorMessage = this.errorMessage = page.locator('#flash');
     }
 
 
