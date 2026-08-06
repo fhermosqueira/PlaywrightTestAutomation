@@ -21,5 +21,7 @@ export class AddElementPage extends BasePage {
         await this.addElementButton.click();
     }
 
-    
+    async clickDeleteButton() {
+        await this.deleteButton.click();
+    }
 }
