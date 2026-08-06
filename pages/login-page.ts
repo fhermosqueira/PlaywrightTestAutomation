@@ -20,7 +20,6 @@ export class LoginPage extends BasePage {
         this.errorMessage = this.errorMessage = page.locator('#flash');
     }
 
-
     // luego, las actions 
     async goToLoginPage() {
         

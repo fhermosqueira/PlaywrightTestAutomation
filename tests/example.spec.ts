@@ -10,6 +10,7 @@ test('succesful login', async ({ loginPage }) => {
 
 })
 
+
 const invalidLoginCases = [
   { 
     description: 'usuario incorrecto', 
@@ -39,6 +40,7 @@ for (const testCase of invalidLoginCases) {
   });
 }
 
+
 test('add element', async ({ addElementPage }) => {
 
   await addElementPage.goToAddElementPage();
@@ -47,6 +49,7 @@ test('add element', async ({ addElementPage }) => {
   await expect(addElementPage.deleteButton).toBeVisible();
 
 })
+
 
 test('add and remove element', async ({ addElementPage }) => {
 
@@ -57,6 +60,7 @@ test('add and remove element', async ({ addElementPage }) => {
   await expect(addElementPage.deleteButton).not.toBeVisible();
 
 })
+
 
 test('succesful login and logout, then addelement', async ({ loginPage, addElementPage }) => {
   await loginPage.goToLoginPage();
