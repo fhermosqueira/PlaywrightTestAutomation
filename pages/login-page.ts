@@ -7,7 +7,7 @@ export class LoginPage extends BasePage {
     readonly submitButton: Locator;
     readonly wrongUsernameMessage: Locator;
     readonly wrongPasswordMessage: Locator;
-     readonly errorMessage: Locator;
+    readonly errorMessage: Locator;
 
     // primero, los elements locators
     constructor(page: Page) {
@@ -24,7 +24,7 @@ export class LoginPage extends BasePage {
     // luego, las actions 
     async goToLoginPage() {
         
-        await this.page.goto('https://the-internet.herokuapp.com/login');
+        await this.page.goto('/login');
     }
 
     async login(username: string, password: string) {

@@ -13,7 +13,7 @@ export class AddElementPage extends BasePage {
     }
 
     async goToAddElementPage() {
-        await this.page.goto('https://the-internet.herokuapp.com/add_remove_elements/');
+        await this.page.goto('/add_remove_elements/');
     }
 
     // luego, las actions
