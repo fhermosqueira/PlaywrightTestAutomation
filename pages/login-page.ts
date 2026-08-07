@@ -9,7 +9,6 @@ export class LoginPage extends BasePage {
     readonly wrongPasswordMessage: Locator;
     readonly errorMessage: Locator;
 
-    // primero, los elements locators
     constructor(page: Page) {
         super(page);
         this.usernameInput = page.getByRole('textbox', { name: 'Username' });
@@ -20,7 +19,6 @@ export class LoginPage extends BasePage {
         this.errorMessage = this.errorMessage = page.locator('#flash');
     }
 
-    // luego, las actions 
     async goToLoginPage() {
         
         await this.page.goto('/login');

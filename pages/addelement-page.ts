@@ -5,7 +5,6 @@ export class AddElementPage extends BasePage {
     readonly addElementButton: Locator;
     readonly deleteButton: Locator;
 
-    // primero, los elements locators
     constructor(page: Page) {
         super(page);     
         this.addElementButton = page.getByRole('button', { name: 'Add Element' });
@@ -16,7 +15,6 @@ export class AddElementPage extends BasePage {
         await this.page.goto('/add_remove_elements/');
     }
 
-    // luego, las actions
     async clickAddElementButton() {
         await this.addElementButton.click();
     }
